@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище gr681_bsyuModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Child">
+    <Key>
+      <PropertyRef Name="id_child" />
+    </Key>
+    <Property Name="id_child" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name_child" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_name_child" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="middle_name_child" Type="nvarchar" MaxLength="50" />
+    <Property Name="data_of_bird" Type="date" Nullable="false" />
+    <Property Name="first_name_parent" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_name_parent" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="middle_name_parent" Type="nvarchar" MaxLength="50" />
+    <Property Name="telephone_parent" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SNILS" Type="varchar" MaxLength="15" />
+    <Property Name="PFDO" Type="bigint" Nullable="false" />
+    <Property Name="program" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="class" Type="int" Nullable="false" />
+    <Property Name="shift" Type="int" Nullable="false" />
+    <Property Name="school" Type="nvarchar" MaxLength="70" />
+    <Property Name="address" Type="nvarchar" MaxLength="80" />
+    <Property Name="educator" Type="int" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="StatusGroup" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="IdGroup" />
+    </Key>
+    <Property Name="IdGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumGroup" Type="int" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Group-Child">
+    <Key>
+      <PropertyRef Name="id_group_child" />
+    </Key>
+    <Property Name="id_group_child" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_id_group" Type="int" Nullable="false" />
+    <Property Name="FK_id_child" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lession-Child">
+    <Key>
+      <PropertyRef Name="id_lession_child" />
+    </Key>
+    <Property Name="id_lession_child" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_id_Lession" Type="int" Nullable="false" />
+    <Property Name="id_group_child" Type="int" Nullable="false" />
+    <Property Name="numder_classroom" Type="int" Nullable="false" />
+    <Property Name="date_time_child" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lession-Employee">
+    <Key>
+      <PropertyRef Name="id_lession_employee" />
+    </Key>
+    <Property Name="id_lession_employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_id_lession" Type="int" Nullable="false" />
+    <Property Name="FK_id_employee" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lessions">
+    <Key>
+      <PropertyRef Name="IdLessions" />
+    </Key>
+    <Property Name="IdLessions" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameLessions" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Brithday" Type="date" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Gender_FK" Type="int" Nullable="false" />
+    <Property Name="Passport_FK" Type="int" Nullable="false" />
+    <Property Name="Address_FK" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Group-Child_Child">
+    <End Role="Child" Type="Self.Child" Multiplicity="1" />
+    <End Role="Group-Child" Type="Self.Group-Child" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Child">
+        <PropertyRef Name="id_child" />
+      </Principal>
+      <Dependent Role="Group-Child">
+        <PropertyRef Name="FK_id_child" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Group-Child_Group">
+    <End Role="Group" Type="Self.Group" Multiplicity="1" />
+    <End Role="Group-Child" Type="Self.Group-Child" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="IdGroup" />
+      </Principal>
+      <Dependent Role="Group-Child">
+        <PropertyRef Name="FK_id_group" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lession-Child_Group-Child">
+    <End Role="Group-Child" Type="Self.Group-Child" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Lession-Child" Type="Self.Lession-Child" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group-Child">
+        <PropertyRef Name="id_group_child" />
+      </Principal>
+      <Dependent Role="Lession-Child">
+        <PropertyRef Name="id_group_child" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lession-Child_Lessions">
+    <End Role="Lessions" Type="Self.Lessions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Lession-Child" Type="Self.Lession-Child" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lessions">
+        <PropertyRef Name="IdLessions" />
+      </Principal>
+      <Dependent Role="Lession-Child">
+        <PropertyRef Name="FK_id_Lession" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lession-Employee_Lessions">
+    <End Role="Lessions" Type="Self.Lessions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Lession-Employee" Type="Self.Lession-Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lessions">
+        <PropertyRef Name="IdLessions" />
+      </Principal>
+      <Dependent Role="Lession-Employee">
+        <PropertyRef Name="FK_id_lession" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lession-Employee_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Lession-Employee" Type="Self.Lession-Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Lession-Employee">
+        <PropertyRef Name="FK_id_employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище gr681_bsyuModelContainer">
+    <EntitySet Name="Child" EntityType="Self.Child" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Group-Child" EntityType="Self.Group-Child" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lession-Child" EntityType="Self.Lession-Child" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lession-Employee" EntityType="Self.Lession-Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lessions" EntityType="Self.Lessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Group-Child_Child" Association="Self.FK_Group-Child_Child">
+      <End Role="Child" EntitySet="Child" />
+      <End Role="Group-Child" EntitySet="Group-Child" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Group-Child_Group" Association="Self.FK_Group-Child_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="Group-Child" EntitySet="Group-Child" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lession-Child_Group-Child" Association="Self.FK_Lession-Child_Group-Child">
+      <End Role="Group-Child" EntitySet="Group-Child" />
+      <End Role="Lession-Child" EntitySet="Lession-Child" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lession-Child_Lessions" Association="Self.FK_Lession-Child_Lessions">
+      <End Role="Lessions" EntitySet="Lessions" />
+      <End Role="Lession-Child" EntitySet="Lession-Child" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lession-Employee_Lessions" Association="Self.FK_Lession-Employee_Lessions">
+      <End Role="Lessions" EntitySet="Lessions" />
+      <End Role="Lession-Employee" EntitySet="Lession-Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lession-Employee_Users" Association="Self.FK_Lession-Employee_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Lession-Employee" EntitySet="Lession-Employee" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище gr681_bsyuModelContainer" CdmEntityContainer="RaspisanieEntities">
+    <EntitySetMapping Name="Child">
+      <EntityTypeMapping TypeName="gr681_bsyuModel.Child">
+        <MappingFragment StoreEntitySet="Child">
+          <ScalarProperty Name="id_child" ColumnName="id_child" />
+          <ScalarProperty Name="first_name_child" ColumnName="first_name_child" />
+          <ScalarProperty Name="last_name_child" ColumnName="last_name_child" />
+          <ScalarProperty Name="middle_name_child" ColumnName="middle_name_child" />
+          <ScalarProperty Name="data_of_bird" ColumnName="data_of_bird" />
+          <ScalarProperty Name="first_name_parent" ColumnName="first_name_parent" />
+          <ScalarProperty Name="last_name_parent" ColumnName="last_name_parent" />
+          <ScalarProperty Name="middle_name_parent" ColumnName="middle_name_parent" />
+          <ScalarProperty Name="telephone_parent" ColumnName="telephone_parent" />
+          <ScalarProperty Name="SNILS" ColumnName="SNILS" />
+          <ScalarProperty Name="PFDO" ColumnName="PFDO" />
+          <ScalarProperty Name="program" ColumnName="program" />
+          <ScalarProperty Name="class" ColumnName="class" />
+          <ScalarProperty Name="shift" ColumnName="shift" />
+          <ScalarProperty Name="school" ColumnName="school" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="educator" ColumnName="educator" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StatusGroup" ColumnName="StatusGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Group">
+      <EntityTypeMapping TypeName="gr681_bsyuModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+          <ScalarProperty Name="NumGroup" ColumnName="NumGroup" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Group_Child">
+      <EntityTypeMapping TypeName="gr681_bsyuModel.Group_Child">
+        <MappingFragment StoreEntitySet="Group-Child">
+          <ScalarProperty Name="id_group_child" ColumnName="id_group_child" />
+          <ScalarProperty Name="FK_id_group" ColumnName="FK_id_group" />
+          <ScalarProperty Name="FK_id_child" ColumnName="FK_id_child" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lession_Child">
+      <EntityTypeMapping TypeName="gr681_bsyuModel.Lession_Child">
+        <MappingFragment StoreEntitySet="Lession-Child">
+          <ScalarProperty Name="id_lession_child" ColumnName="id_lession_child" />
+          <ScalarProperty Name="FK_id_Lession" ColumnName="FK_id_Lession" />
+          <ScalarProperty Name="id_group_child" ColumnName="id_group_child" />
+          <ScalarProperty Name="numder_classroom" ColumnName="numder_classroom" />
+          <ScalarProperty Name="date_time_child" ColumnName="date_time_child" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lession_Employee">
+      <EntityTypeMapping TypeName="gr681_bsyuModel.Lession_Employee">
+        <MappingFragment StoreEntitySet="Lession-Employee">
+          <ScalarProperty Name="id_lession_employee" ColumnName="id_lession_employee" />
+          <ScalarProperty Name="FK_id_lession" ColumnName="FK_id_lession" />
+          <ScalarProperty Name="FK_id_employee" ColumnName="FK_id_employee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lessions">
+      <EntityTypeMapping TypeName="gr681_bsyuModel.Lessions">
+        <MappingFragment StoreEntitySet="Lessions">
+          <ScalarProperty Name="IdLessions" ColumnName="IdLessions" />
+          <ScalarProperty Name="NameLessions" ColumnName="NameLessions" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="gr681_bsyuModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Mname" ColumnName="Mname" />
+          <ScalarProperty Name="Brithday" ColumnName="Brithday" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Gender_FK" ColumnName="Gender_FK" />
+          <ScalarProperty Name="Passport_FK" ColumnName="Passport_FK" />
+          <ScalarProperty Name="Address_FK" ColumnName="Address_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

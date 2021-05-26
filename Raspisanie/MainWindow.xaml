@@ -1,0 +1,36 @@
+﻿<Window x:Class="Raspisanie.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Raspisanie"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="441" ResizeMode="NoResize">
+    <Grid>
+        <DataGrid x:Name="RaspisanieGrid" AutoGenerateColumns="False" Margin=" 0 20 0 0" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Группа" Width="100" Binding="{Binding Path=id_group_child}"/>
+                <DataGridTextColumn Header="Занятие" Width="100" Binding="{Binding Path=NameLessions}"/>
+                <DataGridTextColumn Header="№ Кабинета" Width="100" Binding="{Binding Path=numder_classroom}"/>
+                <DataGridTextColumn Header="Дата-время" Width="100" Binding="{Binding Path=date_time_child, StringFormat=\{0:dd.MM.yy HH:mm\}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Menu Height="20" VerticalAlignment="Top" FontFamily="Veradana" Background="#128FBC" Foreground="White">
+
+            <MenuItem Header="Группы" >
+                <MenuItem Header="Дети" x:Name="AddChild" Click="AddChild_Click"/>
+                <MenuItem Header="Группы" x:Name="AddGroup" Click="AddGroup_Click"/>
+                <MenuItem Header="Сформировать группу" x:Name="FormAGroup" Click="FormAGroup_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="Занятия">
+                <MenuItem Header="Добавить предмет" x:Name="AddLession" Click="AddLession_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="Расписание">
+                <MenuItem Header="Добавить запись" x:Name="AddRecord" Click="AddRecord_Click"/>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>
