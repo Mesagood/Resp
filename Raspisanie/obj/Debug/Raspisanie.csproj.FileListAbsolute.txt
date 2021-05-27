@@ -7,7 +7,6 @@ Z:\IT CUBE\Raspisanie\Raspisanie-master\Raspisanie\bin\Debug\EntityFramework.xml
 Z:\IT CUBE\Raspisanie\Raspisanie-master\Raspisanie\bin\Debug\EntityFramework.SqlServer.xml
 Z:\IT CUBE\Raspisanie\Raspisanie-master\Raspisanie\bin\Debug\ru\EntityFramework.resources.dll
 Z:\IT CUBE\Raspisanie\Raspisanie-master\Raspisanie\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
-Z:\IT CUBE\Raspisanie\Raspisanie-master\Raspisanie\obj\Debug\Raspisanie.csprojAssemblyReference.cache
 Z:\IT CUBE\Raspisanie\Raspisanie-master\Raspisanie\obj\Debug\Groups\AddChildWindow.g.cs
 Z:\IT CUBE\Raspisanie\Raspisanie-master\Raspisanie\obj\Debug\Groups\AddLessionWindow.g.cs
 Z:\IT CUBE\Raspisanie\Raspisanie-master\Raspisanie\obj\Debug\Groups\AddRecordWindow.g.cs

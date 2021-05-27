@@ -26,9 +26,7 @@ namespace Raspisanie
       
         public MainWindow()
         {
-            InitializeComponent();
-           
-
+            InitializeComponent();           
             Load();
         }
         private void Load()

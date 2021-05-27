@@ -40,33 +40,37 @@ namespace Raspisanie.Groups
                 Group asd = GroupCB.SelectedItem as Group;
                 Lessions lessions = LessionCB.SelectedItem as Lessions;
 
-                
-                var query = (from gc in db.Group_Child
-                             where gc.FK_id_group == asd.IdGroup
-                             select gc).ToList();
-                for (int i = 0; i < query.Count(); i++)
-                {
-                    Lession_Child lession_Child = new Lession_Child
-                    {
-                        id_group_child = query[i].id_group_child,
-                        FK_id_Lession = lessions.IdLessions,
-                        numder_classroom = int.Parse(NumberCub.Text),
-                        date_time_child = Convert.ToDateTime(DateTimeLess.Text)
-                    };
-                    db.Lession_Child.Add(lession_Child);
-                    db.SaveChanges();
-                }
-                NotAll.Visibility = Visibility.Hidden;
-                Fine.Visibility = Visibility.Visible;
-                time.Start();
-            }
-            else
-            {
-                NotAll.Visibility = Visibility.Visible;
-                Fine.Visibility = Visibility.Hidden;
-                time.Start();
-            }
 
+                try
+                {
+                    var query = (from gc in db.Group_Child
+                                 where gc.FK_id_group == asd.IdGroup
+                                 select gc).ToList();
+
+                    for (int i = 0; i < query.Count(); i++)
+                    {
+                        Lession_Child lession_Child = new Lession_Child
+                        {
+                            id_group_child = query[i].id_group_child,
+                            FK_id_Lession = lessions.IdLessions,
+                            numder_classroom = int.Parse(NumberCub.Text),
+                            date_time_child = Convert.ToDateTime(DateTimeLess.Text)
+                        };
+                        db.Lession_Child.Add(lession_Child);
+                        db.SaveChanges();
+                    }
+
+                    NotAll.Visibility = Visibility.Hidden;
+                    Fine.Visibility = Visibility.Visible;
+                    time.Start();
+                }
+                catch (Exception)
+                {
+                    NotAll.Visibility = Visibility.Visible;
+                    Fine.Visibility = Visibility.Hidden;
+                    time.Start();
+                }
+            }
         }
 
         private void LoadLess()

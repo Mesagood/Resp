@@ -5,9 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Raspisanie"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="441" ResizeMode="NoResize">
+        Title="Расписание" Height="450" Width="440" ResizeMode="NoResize">
     <Grid>
+        
         <DataGrid x:Name="RaspisanieGrid" AutoGenerateColumns="False" Margin=" 0 20 0 0" IsReadOnly="True">
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding NameLessions}" Value="Python" >
+                            <Setter Property="Background" Value="GreenYellow" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding NameLessions}" Value="Кибергигиена">
+                            <Setter Property="Background" Value="#FFCB262D" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding NameLessions}" Value="Робототехника">
+                            <Setter Property="Background" Value="#FFDCE614" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding NameLessions}" Value="Алгоритмика">
+                            <Setter Property="Background" Value="#FF1FC19C" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding NameLessions}" Value="Scratch">
+                            <Setter Property="Background" Value="#FFDC39CD" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding NameLessions}" Value="VR-AR">
+                            <Setter Property="Background" Value="#FF052709" />
+                            <Setter Property="Foreground" Value="White" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding NameLessions}" Value="Мобильная разработка">
+                            <Setter Property="Background" Value="Red" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Группа" Width="100" Binding="{Binding Path=id_group_child}"/>
                 <DataGridTextColumn Header="Занятие" Width="100" Binding="{Binding Path=NameLessions}"/>

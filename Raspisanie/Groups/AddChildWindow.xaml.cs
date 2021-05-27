@@ -23,14 +23,18 @@ namespace Raspisanie.Groups
         public AddChildWindow()
         {
             InitializeComponent();
-            time = new DispatcherTimer();
+
+            EducatorTB.ItemsSource = db.Users.ToList();
+            time = new DispatcherTimer(); 
             time.Tick += new EventHandler(Time_Tick);
             time.Interval = new TimeSpan(0, 0, 2);
+
         }
 
         private void AddChild_Click(object sender, RoutedEventArgs e)
         {
             Child child = new Child();
+            Users users = EducatorTB.SelectedItem as Users;
 
             if (FirstNameChild.Text == "" || LastNameChild.Text == "" || DateOfBird.SelectedDate == null
                 || FirstNameParent.Text == "" || LastNameParent.Text == "" || TelephoneNumber.Text == ""
@@ -41,7 +45,7 @@ namespace Raspisanie.Groups
                 time.Start();
             }
             else
-            {
+            {                
                 try
                 {
                     child.first_name_child = FirstNameChild.Text;
@@ -59,8 +63,9 @@ namespace Raspisanie.Groups
                     child.shift = int.Parse(Shift.Text);
                     child.school = School.Text;
                     child.address = AddressTB.Text;
-                    child.educator = int.Parse(EducatorTB.Text);
+                    child.educator = users.IdUser;
                     child.Status = "true";
+                    child.StatusGroup = "true";
                     db.Child.Add(child);
                     db.SaveChanges();
                     Cleaner();
@@ -102,8 +107,8 @@ namespace Raspisanie.Groups
             ClassTB.Clear();
             Shift.Clear();
             School.Clear();
-            AddressTB.Clear();
-            EducatorTB.Clear();
+            AddressTB.Clear();            
+            EducatorTB.SelectedIndex = -1;
         }
     }
 }
